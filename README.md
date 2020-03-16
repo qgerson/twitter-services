@@ -2,8 +2,8 @@
 
 Microservicio Spring-boot, Eurka, Zuul and Feign Based.
 
-criteria-service: microservicio Diserñado bajo DDD
-twittre-service: Hexagonal Architecture
+criteria-service: microservicio Diseñado bajo DDD
+twittre-service: Hexagonal Architecture con DDD
 
 Todo se persiste en memoria local...
 
