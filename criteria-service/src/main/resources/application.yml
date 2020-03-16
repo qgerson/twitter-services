@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: criteria-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 2222 #HTTP (Tomcat) port

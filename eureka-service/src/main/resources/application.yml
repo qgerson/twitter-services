@@ -1,0 +1,20 @@
+spring:
+  application:
+      name: eureka-service
+
+server:
+  port: 8761
+
+info:
+  component: Discovery Service
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+        defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    server:
+        waitTimeInMsWhenSyncEmpty: 0
