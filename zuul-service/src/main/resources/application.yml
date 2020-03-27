@@ -25,10 +25,10 @@ zuul:
     ignoredServices: "*"
     routes:
       criteria-service:
-        path: /resources/**
+        path: "/resources/**"
         serviceId: criteria-service
         stripPrefix: true
       twitter-service:
-        path: /services/**
+        path: "/services/**"
         serviceId: twitter-service
         stripPrefix: true
