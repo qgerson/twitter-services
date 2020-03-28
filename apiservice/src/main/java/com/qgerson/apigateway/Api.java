@@ -8,9 +8,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableEurekaClient
-public class ApiGateway {
+public class Api {
     public static void main(String[] args) {
-        SpringApplication.run(ApiGateway.class, args);
+        SpringApplication.run(Api.class, args);
     }
 
 }
