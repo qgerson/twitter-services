@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -66,9 +65,15 @@ public class TwitterServiceApp implements CommandLineRunner {
                         for (String s : list) listLanguage.add( s.trim( ) );
                     }
                 });
+
+                logger.info("Criterion applied...");
+                logger.info("by Followers amount:  "  + followers);
+                logger.info("by Language list: " + listLanguage );
+
             } else {
                 throw new Exception("NO entity Allowed!");
             }
+
         }
     }
 
