@@ -5,7 +5,6 @@ import com.qgerson.criteriaservice.domain.model.entity.Entity;
 import com.qgerson.criteriaservice.domain.service.CriteriaService;
 import com.qgerson.criteriaservice.domain.valueobjects.CriteriaVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +28,7 @@ public class CriteriaController extends BaseController<Entity> {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{criteriaId}")
     public ResponseEntity<Entity> findById(@PathVariable("criteriaId") String id){
-        logger.info( String.format("criteria-service findById was invoked {}  by {}", criteriaService.getClass().getName(), id) );
+        logger.info( String.format("criteria-service findById was invoked %s by %s", criteriaService.getClass().getName(), id) );
         id = id.trim();
         Entity criteria;
         try{
@@ -43,7 +42,7 @@ public class CriteriaController extends BaseController<Entity> {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public  ResponseEntity<Collection<Criteria>> getAllCriterion() {
-        logger.info( String.format("criteria-service getAllCriterion was invoked {}  ", criteriaService.getClass().getName() ) );
+        logger.info( String.format("criteria-service getAllCriterion was invoked %s  ", criteriaService.getClass().getName() ) );
         Collection<Criteria> criterion;
         try{
             criterion = criteriaService.getAll();
@@ -80,7 +79,7 @@ public class CriteriaController extends BaseController<Entity> {
 
     @RequestMapping(value = "/remove/{id}", method= RequestMethod.GET)
      public ResponseEntity<Entity> removeCriteria(@PathVariable("id") String id) {
-        logger.info( String.format("criteria-service removeCriteria was invoked {}  by {}", criteriaService.getClass().getName(), id) );
+        logger.info( String.format("criteria-service removeCriteria was invoked %s by %s", criteriaService.getClass().getName(), id) );
 
         id = id.trim().toLowerCase();
 

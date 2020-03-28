@@ -1,34 +1,32 @@
-info:
-    component: Zuul Service
-  # Spring properties
 spring:
     application:
       name: zuul-service
-server:
-    port: 8765
-
-eureka:
-    client:
-      registerWithEureka: false
-      fetchRegistry: true
-      serviceUrl:
-        defaultZone: http://localhost:8761/eureka/
-    instance:
-      leaseRenewalIntervalInSeconds: 5
-      metadataMap:
-        instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
 
 zuul:
-    host:
-      connet-timeout-millis: 5000000
-      socket-timeout-millis: 5000000
-    ignoredServices: "*"
-    routes:
-      criteria-service:
-        path: /resources/**
-        serviceId: criteria-service
-        stripPrefix: true
-      twitter-service:
-        path: /services/**
-        serviceId: twitter-service
-        stripPrefix: true
+  ignoredServices: "*"
+  routes:
+    configurationapi:
+      path: "/api/configuration/**"
+      serviceId: criteria-service
+      stripPrefix: true
+    api:
+      path: "/api/**"
+      serviceId: twitter-service
+      stripPrefix: true
+
+server:
+    port: 8080
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 3
+    leaseExpirationDurationInSeconds: 2
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:password@localhost:8761}/eureka/
+
+
+
+

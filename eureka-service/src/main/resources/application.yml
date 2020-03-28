@@ -2,19 +2,18 @@ spring:
   application:
       name: eureka-service
 
-server:
-  port: 8761
-
-info:
-  component: Discovery Service
-
 eureka:
   instance:
     hostname: localhost
+    leaseRenewalIntervalInSeconds:  30
   client:
     registerWithEureka: false
-    fetchRegistry: false
+    fetchRegistry:  false
     serviceUrl:
-        defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    server:
-        waitTimeInMsWhenSyncEmpty: 0
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:password@localhost:8761}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enableSelfPreservation: false
+
+server:
+  port: ${vcap.application.port:8761}

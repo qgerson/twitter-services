@@ -1,16 +1,16 @@
-package com.qgerson.zuulservice;
+package com.qgerson.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
-
-@EnableZuulProxy
-@EnableEurekaClient
 @SpringBootApplication
-public class EdgeApp {
+@EnableCircuitBreaker
+@EnableEurekaClient
+public class ApiGateway {
     public static void main(String[] args) {
-        SpringApplication.run(EdgeApp.class, args);
+        SpringApplication.run(ApiGateway.class, args);
     }
+
 }
